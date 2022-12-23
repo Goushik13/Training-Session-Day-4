@@ -1,0 +1,19 @@
+int uniquePaths(int m, int n)
+{
+    int *path = (int*)calloc(m*n, sizeof(int));
+    for(int row = 0; row < m; row++)
+    {
+        for(int col = 0; col < n; col++)
+        {
+            if(row == 0 || col == 0)
+            {
+                *(path + (row * n) + col) = 1;
+            }
+            else
+            {
+                *(path + (row * n) + col) = *(path + (row * n) - 1 + col) + *(path + ((row - 1) * n) + col);
+            }
+        }
+    }
+    return *(path + (m * n) - 1);
+}
