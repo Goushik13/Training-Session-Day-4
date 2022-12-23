@@ -1,0 +1,27 @@
+bool isAnagram(char * s, char * t){
+    int CountS[26] = {0};
+    int CountT[26] = {0};
+    unsigned int SizeS = 0U;
+    unsigned int SizeT = 0U;
+    const char* pS = s;
+    const char* pT = t;
+    
+    while(*pS != '\0') {
+        CountS[*pS-'a'] += 1;
+        SizeS++;
+        pS++;
+    }
+    while(*pT != '\0') {
+        CountT[*pT-'a'] += 1;
+        SizeT++;
+        pT++;
+    }
+    
+    
+    if(SizeS != SizeT) return false;
+    for(unsigned int idx = 0U; idx < 26; idx++){
+        if(CountS[idx] != CountT[idx]) return false;
+    }
+    
+    return true;   
+}
